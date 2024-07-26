@@ -1,0 +1,17 @@
+.container {
+  padding: 0 15px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  color: red;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
