@@ -4,7 +4,7 @@
 // Компоненти MovieCast і MovieReviews не є окремими сторінками, вони є лише частинами сторінки MovieDetailsPage
 // тут получаем еще полную информацию про каждый элемент списка
 
-import { useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../components/movies-api";
 
@@ -36,10 +36,17 @@ export default function MovieDetailsPage() {
           <b>Overview:</b> <p>{movies.overview}</p>
           <b>Language:</b>
           <p>{movies.original_language}</p>
+          <ul>
+            <li>
+              <NavLink to="cast">MovieCast</NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews">MovieReviews</NavLink>
+            </li>
+          </ul>
+          <Outlet />
         </div>
       )}
-      {/* <p>MovieCast</p>
-      <p>MovieReviews</p> */}
     </div>
   );
 }
