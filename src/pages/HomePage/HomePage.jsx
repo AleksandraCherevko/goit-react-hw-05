@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-import { getMovie } from "../../components/movies-api";
 import MovieList from "../../components/MovieList/MovieList";
+import { getMovie } from "../../components/movies-api";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log(movies);
-    async function fetchMovies() {
+    async function fetchMovieList() {
       try {
         const data = await getMovie();
-        setMovies(data.results);
+        setMovies(data);
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.log("error");
       }
     }
-
-    fetchMovies();
+    fetchMovieList();
   }, []);
-
   return <div>{movies.length > 0 && <MovieList movies={movies} />}</div>;
 }
