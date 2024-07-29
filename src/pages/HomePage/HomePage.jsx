@@ -16,5 +16,6 @@ export default function HomePage() {
     }
     fetchMovieList();
   }, []);
+
   return <div>{movies.length > 0 && <MovieList movies={movies} />}</div>;
 }
