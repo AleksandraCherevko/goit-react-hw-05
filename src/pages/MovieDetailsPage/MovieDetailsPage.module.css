@@ -1,0 +1,96 @@
+.movieContainer {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.movieCard {
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.moviePoster {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.movieInfo {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(100% - 200px);
+}
+
+.movieTitle {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.movieScore,
+.movieOverview,
+.movieLanguage {
+  color: #666;
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.navigation {
+  margin-top: 20px;
+}
+
+.navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.navigation li {
+  margin: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #808080;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #555;
+}
+
+.moviesMoreDetails {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.moviesMoreDetails .moviesMoreDetItem {
+  margin: 0;
+}
+.moreDetTitle {
+  margin: 0 0 15px 0;
+  color: #333;
+  text-align: center;
+}
+.moviesMoreDetLink {
+  text-decoration: none;
+  color: #808080;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.moviesMoreDetLink:hover {
+  color: #555;
+}

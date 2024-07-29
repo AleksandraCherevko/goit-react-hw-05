@@ -1,0 +1,40 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.castItem {
+  width: 200px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.castImg {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.casAfterTitle {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
+.casTitle {
+  display: block;
+  font-weight: bold;
+}
+
+.casAlert {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+}

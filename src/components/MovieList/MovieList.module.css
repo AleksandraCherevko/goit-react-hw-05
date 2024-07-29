@@ -1,0 +1,34 @@
+.movieList {
+  list-style: none;
+  padding: 0;
+}
+
+.movieItem {
+  background: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.movieItem:hover {
+  background-color: #e9ecef;
+}
+
+.movieListLink {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.movieListLink:hover {
+  color: #000;
+}
+
+.movieListLink:visited {
+  color: #666;
+}
+
+.movieListLink:active {
+  color: #333;
+}

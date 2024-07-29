@@ -11,7 +11,6 @@ import MovieReviews from "../MovieReviews/MovieReviews";
 export default function App() {
   return (
     <div className={css.container}>
-      <h1>Find what you want</h1>
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />

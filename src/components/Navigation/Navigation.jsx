@@ -13,7 +13,7 @@ const makeNaveLinkClass = ({ isActive }) => {
 export default function Navigation() {
   return (
     <header>
-      <nav>
+      <nav className={css.Navigation}>
         <NavLink to="/" className={makeNaveLinkClass}>
           Home
         </NavLink>

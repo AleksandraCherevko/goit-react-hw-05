@@ -1,0 +1,39 @@
+.errorMesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+  color: #333;
+  text-align: center;
+}
+.errorMes {
+  display: inline-block;
+  background-color: #ffffff; 
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.errorMesTitle {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+}
+
+.errorMesAlert {
+  font-size: 2rem;
+  margin: 0;
+  color: black;
+}
+
+.errorMesLink {
+  color: #007aff; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.errorMesLink:hover {
+  text-decoration: underline;
+}

@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import css from "./MovieList.module.css";
 
 export default function MovieList({ movies }) {
   return (
-    <ul>
+    <ul className={css.movieList}>
       {movies.map((movie) => (
-        <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+        <li key={movie.id} className={css.movieItem}>
+          <NavLink className={css.movieListLink} to={`/movies/${movie.id}`}>
+            {movie.title}
+          </NavLink>
         </li>
       ))}
     </ul>

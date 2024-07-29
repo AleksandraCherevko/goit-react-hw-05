@@ -1,17 +1,9 @@
-.container {
-  padding: 0 15px;
-}
-
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-.active {
-  color: red;
-}
-
-nav {
+.navigation {
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation a:hover {
+  color: #000;
 }

@@ -1,0 +1,24 @@
+.reviewsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reviewItem {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.reviewAuthor {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reviewContent {
+  font-size: 14px;
+  line-height: 1.5;
+}
