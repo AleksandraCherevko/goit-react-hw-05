@@ -5,7 +5,8 @@ const API_KEY = "ce1844e25f92f5e998a110cd12568784";
 
 export const getMovie = async () => {
   const response = await axios.get(`/movie/popular?api_key=${API_KEY}`);
-  return response.data.results; // Ensure you return the results array
+  return response.data.results; 
+  
 };
 
 export const getMovieById = async (movieID) => {

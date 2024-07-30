@@ -94,3 +94,25 @@
 .moviesMoreDetLink:hover {
   color: #555;
 }
+
+.backBtn {
+  width: 100px;
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #555;
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.backBtn:hover {
+  background: #f0f0f0;
+}

@@ -1,11 +1,15 @@
-import { NavLink, Outlet, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink, Outlet, useParams, useLocation } from "react-router-dom";
+
+import { useEffect, useState, useRef, Suspense } from "react";
 import { getMovieById } from "../../components/movies-api";
 import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null); // Исправлено название переменной на singular, так как это один фильм
+  const [movie, setMovie] = useState(null);
+  const location = useLocation();
+
+  const backLinkURL = useRef(location.state ?? "/movies");
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -13,7 +17,7 @@ export default function MovieDetailsPage() {
         const data = await getMovieById(movieId);
         setMovie(data);
       } catch (error) {
-        console.error("Error fetching movie details:", error); // Добавлен вывод ошибки в консоль
+        console.alert("Error...", error);
       }
     }
     fetchMovieDetails();
@@ -21,6 +25,9 @@ export default function MovieDetailsPage() {
 
   return (
     <div className={css.movieContainer}>
+      <NavLink to={backLinkURL.current} className={css.backBtn}>
+        👈
+      </NavLink>
       {movie && (
         <>
           <div className={css.movieCard}>
@@ -52,7 +59,9 @@ export default function MovieDetailsPage() {
               </NavLink>
             </li>
           </ul>
-          <Outlet />
+          <Suspense fallback={<div>Loading information...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </div>

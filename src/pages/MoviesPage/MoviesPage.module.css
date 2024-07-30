@@ -1,0 +1,75 @@
+
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  width: 250px;
+}
+
+.searchButton {
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.searchButton:hover {
+  background: #f0f0f0;
+}
+
+.movieList {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.movieItem {
+  background: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movieItem:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movieLink {
+  text-decoration: none;
+  color: #888;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.movieLink:hover {
+  color: #555; 
+  
+}
+
+.movieLink:visited {
+  color: #888; 
+  
+}
+
+.movieListLink:active {
+  color: #666; 
+  
+}
