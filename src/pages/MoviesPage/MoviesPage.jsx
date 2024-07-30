@@ -1,42 +1,64 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import css from "./MoviesPage.module.css";
+import MovieList from "../../components/MovieList/MovieList";
+import { getMovie } from "../../components/movies-api";
 import { searchMovie } from "../../components/movies-api";
 
 export default function MoviesPage() {
-  const [query, setQuery] = useState("");
+  const [filterValue, setFilterValue] = useState("");
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = async () => {
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+        const initialMovies = await getMovie();
+        setMovies(initialMovies);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  const handleFilter = async (value) => {
+    setFilterValue(value);
+    setLoading(true);
+
     try {
-      const results = await searchMovie(query);
+      const results = await searchMovie(value);
       setMovies(results);
     } catch (error) {
-      console.error("Error searching for movies:", error);
+      console.error("Error searching movies:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(filterValue.toLowerCase())
+  );
 
   return (
     <div className={css.searchContainer}>
       <input
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={filterValue}
+        onChange={(e) => handleFilter(e.target.value)}
         className={css.searchInput}
         placeholder="Search movies..."
       />
-      <button className={css.searchButton} onClick={handleSearch}>
+      <button
+        onClick={() => handleFilter(filterValue)}
+        className={css.searchButton}
+      >
         Search
       </button>
-      <ul className={css.movieList}>
-        {movies.map((movie) => (
-          <li key={movie.id} className={css.movieItem}>
-            <Link to={`/movies/${movie.id}`} className={css.movieLink}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {loading ? <p>Loading...</p> : <MovieList movies={filteredMovies} />}
     </div>
   );
 }

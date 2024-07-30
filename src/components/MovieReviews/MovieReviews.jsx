@@ -13,7 +13,7 @@ export default function MovieReviews() {
         const data = await movieReviews(movieId);
         setReviews(data.results);
       } catch (error) {
-        console.error("Error fetching reviews:", error);
+        console.error("Error", error);
       }
     }
     fetchReviews();

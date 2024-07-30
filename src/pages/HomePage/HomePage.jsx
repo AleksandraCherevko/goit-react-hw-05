@@ -34,6 +34,7 @@ export default function HomePage() {
   return (
     <div>
       <MoviesPage value={moviesFilter} onFilter={changeTitleFilter} />
+
       {movies.length > 0 && <MovieList movies={filteredMovies} />}
     </div>
   );
