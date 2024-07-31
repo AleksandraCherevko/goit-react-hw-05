@@ -1,32 +1,47 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import css from "./MoviesPage.module.css";
 import { searchMovie } from "../../components/movies-api";
 
 export default function MoviesPage() {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get.query ?? "");
   const [movies, setMovies] = useState([]);
 
-  const handleSearch = async () => {
+  useEffect(() => {
+    if (query) {
+      handleSearch(query);
+    }
+  }, [query]);
+
+  const handleSearch = async (query) => {
     try {
       const results = await searchMovie(query);
       setMovies(results);
     } catch (error) {
       console.error("Error searching for movies:", error);
     }
-  }; 
+  };
 
-  
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+    setSearchParams({ query: e.target.value });
+  };
+
+  const handleClick = () => {
+    handleSearch(query);
+  };
+
   return (
     <div className={css.searchContainer}>
       <input
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleChange}
         className={css.searchInput}
         placeholder="Search movies..."
       />
-      <button className={css.searchButton} onClick={handleSearch}>
+      <button className={css.searchButton} onClick={handleClick}>
         Search
       </button>
       <ul className={css.movieList}>
