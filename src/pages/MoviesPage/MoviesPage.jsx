@@ -14,7 +14,9 @@ export default function MoviesPage() {
     } catch (error) {
       console.error("Error searching for movies:", error);
     }
-  };
+  }; 
+
+  
   return (
     <div className={css.searchContainer}>
       <input

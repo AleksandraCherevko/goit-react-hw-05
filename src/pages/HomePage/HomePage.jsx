@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import { getMovie } from "../../components/movies-api";
-import MoviesPage from "../MoviesPage/MoviesPage";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,7 +19,7 @@ export default function HomePage() {
         const data = await getMovie();
         setMovies(data);
       } catch (error) {
-        console.error("Error fetching movie list:", error);
+        console.error("Error....", error);
       }
     }
     fetchMovieList();
@@ -33,8 +33,15 @@ export default function HomePage() {
 
   return (
     <div>
-      <MoviesPage value={moviesFilter} onFilter={changeTitleFilter} />
-
+      <div className={css.searchContainer}>
+        <input
+          type="text"
+          value={moviesFilter}
+          onChange={(e) => changeTitleFilter(e.target.value)}
+          className={css.searchInput}
+          placeholder="Filter movies..."
+        />
+      </div>
       {movies.length > 0 && <MovieList movies={filteredMovies} />}
     </div>
   );
