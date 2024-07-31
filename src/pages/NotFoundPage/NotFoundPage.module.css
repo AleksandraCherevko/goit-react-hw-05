@@ -9,7 +9,7 @@
 }
 .errorMes {
   display: inline-block;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
   max-width: 80%;
@@ -29,7 +29,7 @@
 }
 
 .errorMesLink {
-  color: #007aff; 
+  color: #007aff;
   text-decoration: none;
   font-weight: bold;
 }
