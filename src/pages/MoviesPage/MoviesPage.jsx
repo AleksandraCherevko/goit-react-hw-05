@@ -5,45 +5,47 @@ import { searchMovie } from "../../components/movies-api";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get.query ?? "");
+  const [query, setQuery] = useState(searchParams.get("query") ?? "");
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    if (query) {
-      handleSearch(query);
-    }
-  }, [query]);
+  const seacrhQuery = searchParams.get("query") ?? "";
 
-  const handleSearch = async (query) => {
-    try {
-      const results = await searchMovie(query);
-      setMovies(results);
-    } catch (error) {
-      console.error("Error searching for movies:", error);
+  useEffect(() => {
+    if (seacrhQuery) {
+      const handleSearch = async () => {
+        try {
+          const results = await searchMovie(seacrhQuery);
+          setMovies(results);
+        } catch (error) {
+          console.error("Error searching for movies:", error);
+        }
+      };
+      handleSearch();
     }
-  };
+  }, [seacrhQuery]);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
-    setSearchParams({ query: e.target.value });
   };
 
-  const handleClick = () => {
-    handleSearch(query);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchParams({ query: query });
   };
 
   return (
     <div className={css.searchContainer}>
-      <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        className={css.searchInput}
-        placeholder="Search movies..."
-      />
-      <button className={css.searchButton} onClick={handleClick}>
-        Search
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          className={css.searchInput}
+          placeholder="Search movies..."
+        />{" "}
+        <button className={css.searchButton}>Search</button>
+      </form>
+
       <ul className={css.movieList}>
         {movies.map((movie) => (
           <li key={movie.id} className={css.movieItem}>
